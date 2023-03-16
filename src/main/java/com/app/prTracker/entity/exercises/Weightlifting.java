@@ -6,6 +6,8 @@ import com.app.prTracker.entity.exercises.weightlifting.CleanJerk;
 import com.app.prTracker.entity.exercises.weightlifting.Snatch;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
@@ -18,6 +20,7 @@ import java.time.LocalDate;
 })
 public abstract class Weightlifting extends Exercise {
 
+    @NotNull
     private double prWeight;
 
     public Weightlifting(LocalDate scoreDate, double prWeight) {

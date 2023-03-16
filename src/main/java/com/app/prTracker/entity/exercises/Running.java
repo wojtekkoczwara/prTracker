@@ -6,6 +6,8 @@ import com.app.prTracker.entity.exercises.running.Run5km;
 import com.app.prTracker.entity.exercises.running.RunHalfMarathon;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
@@ -19,6 +21,7 @@ import java.time.LocalDate;
 })
 public abstract class Running extends Exercise {
 
+    @NotNull
     private Long runningTimeInSeconds;
     private Long secPerKilometer;
 

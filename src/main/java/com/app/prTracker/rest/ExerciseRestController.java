@@ -4,6 +4,7 @@ import com.app.prTracker.entity.Exercise;
 import com.app.prTracker.rest.exceptions.ExerciseNotFoundException;
 import com.app.prTracker.service.ExerciseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.TransactionSystemException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,9 +33,15 @@ public class ExerciseRestController {
     }
 
     @PostMapping("/exercises")
-    public Exercise addDiscipline(@RequestBody Exercise exercise){
-        exerciseService.save(exercise);
-        return exercise;
+    public Object addDiscipline(@RequestBody Exercise exercise){
+
+        try {
+            exerciseService.save(exercise);
+            return exercise;
+        } catch (TransactionSystemException e){
+           throw new TransactionSystemException("One of the field is missing," +
+                   "check your request and try again");
+        }
     }
 
     @DeleteMapping("/exercises/{exerciseId}")

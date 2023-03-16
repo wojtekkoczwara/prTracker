@@ -24,7 +24,7 @@ public class ExerciseServiceImpl implements ExerciseService {
 
     @Override
     public List<Exercise> findAll() {
-        return disciplineDao.findAll( Sort.by(Sort.Direction.ASC, "scoreDate"));
+        return disciplineDao.findAll( Sort.by(Sort.Direction.ASC, "id"));
     }
 
     @Override

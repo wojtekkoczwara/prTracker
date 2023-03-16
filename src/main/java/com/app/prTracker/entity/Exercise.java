@@ -5,6 +5,7 @@ import com.app.prTracker.entity.exercises.Weightlifting;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.beans.ConstructorProperties;
 import java.time.LocalDate;
@@ -26,15 +27,12 @@ public abstract class Exercise {
     generator = "tableGenerator")
     private int id;
 
-//    private String disciplineName;
-
-
+    @NotNull
     private LocalDate scoreDate;
 
 
 
     public Exercise(LocalDate scoreDate) {
-//        this.disciplineName = disciplineName;
         this.scoreDate = scoreDate;
     }
 
